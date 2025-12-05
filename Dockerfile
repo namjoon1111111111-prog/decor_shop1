@@ -1,14 +1,6 @@
-# Dùng image chính thức, Render free tier kéo được 100%
-FROM eclipse-temurin:17-jdk-alpine
+FROM tomcat:10.1-jdk17-temurin
 
-WORKDIR /app
-
-# Copy file WAR của bạn (đang làm thử)
-COPY WebApplication2.war app.war
+# Copy WAR vào thư mục Tomcat
+COPY WebApplication2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
-
-# Render yêu cầu dùng cổng $PORT
-ENV PORT 8080
-
-ENTRYPOINT ["java", "-jar", "app.war"]
